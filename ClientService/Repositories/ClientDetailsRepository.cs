@@ -45,14 +45,31 @@ namespace ClientService.Repositories
 
         public async Task SaveAsync(ClientDetailsDomainModel clientDetailsDomainModel)
         {
+            var clientDetails = await _context.ClientDetails.SingleOrDefaultAsync(e => e.Id == clientDetailsDomainModel.Id);
             var entity = _mapper.Map<ClientDetailsEntity>(clientDetailsDomainModel);
-            _context.ClientDetails.Add(entity);
+            if (clientDetails == null)
+            {
+                _context.ClientDetails.Add(entity);
+            }
+            else
+            {
+                clientDetails.FirstName = entity.FirstName;
+                clientDetails.LastName = entity.LastName;
+                clientDetails.EmailAddress = entity.EmailAddress;
+                clientDetails.PensionType = entity.PensionType;
+                clientDetails.PensionTotal = entity.PensionTotal;
+            }
+         
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Guid clientId)
         {
             var clientDetails = await _context.ClientDetails.SingleOrDefaultAsync(e => e.Id == clientId);
+            if (clientDetails == null)
+            {
+                throw new NotFoundException($"No client details found by the given Client Id ({clientId}).");
+            }
             _context.ClientDetails.Remove(clientDetails);
             await _context.SaveChangesAsync();
         }

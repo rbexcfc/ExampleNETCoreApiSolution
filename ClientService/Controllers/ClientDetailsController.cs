@@ -112,10 +112,18 @@ namespace ClientService.Controllers
         /// </summary>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _clientDetailsService.DeleteAsync(id);
-            return NoContent();
+            try
+            {
+                await _clientDetailsService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
         }
     }
 }

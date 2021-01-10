@@ -28,7 +28,7 @@ namespace ClientService.Services
             }       
             catch (Azure.RequestFailedException)
             {
-                //In the real world log this to App Insights and handle the eror gracefully.
+                //In the real world log this to App Insights and handle the error gracefully.
                 throw new BlobExistsException($"The following file has already been uploaded ({clientDetailsForm.ClientDetailsForm.FileName})");
             }
         }

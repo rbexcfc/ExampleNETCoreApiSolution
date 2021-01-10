@@ -1,4 +1,5 @@
-﻿using ClientService.Models.Information;
+﻿using ClientService.Models;
+using ClientService.Models.Information;
 using FluentValidation;
 
 namespace ClientService.Validators
@@ -18,6 +19,10 @@ namespace ClientService.Validators
                 .NotEmpty()
                 .EmailAddress()
                 .WithMessage("Email address is invalid");
+            RuleFor(x => x.PensionType).IsInEnum()
+                .WithMessage("Pension Type is invalid");
+            RuleFor(x => x.PensionTotal).NotEmpty()
+               .WithMessage("Pension total is invalid");
         }
     }
 }

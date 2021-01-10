@@ -14,7 +14,7 @@ namespace ClientService.Models.Entity
         [Required]
         public string EmailAddress { get; set; }
         public PensionTypes PensionType { get; set; }
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PensionTotal { get; set; }
     }
 }

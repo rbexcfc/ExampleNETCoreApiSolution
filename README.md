@@ -19,7 +19,8 @@ Before running it is required to have a Local SQL DB, the connection string must
 It is also required to download and run the Azure Storage Emulator which can be found [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator).  
 
 A person looking to improve and take this solution further could do the following:
-* Tests, Tests, Tests.
+* Tests, Tests, Tests
+* Add a PUT endpoint for updating details
 * Improve/add error handling
 * Extend functionality - for example the blob stoarge uploader is fairly simple, how about taking the data from the CSV files and then saving them to the DB before uploading to blob storage?
 * Make the code more DRY (especially in the repository)

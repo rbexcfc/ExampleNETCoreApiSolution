@@ -2,6 +2,7 @@ using AutoMapper;
 using ClientService.Controllers;
 using ClientService.Exceptions;
 using ClientService.Mappings;
+using ClientService.Models;
 using ClientService.Models.Domain;
 using ClientService.Models.Information;
 using ClientService.Services;
@@ -39,8 +40,10 @@ THEN the client details are returned ")]
             var firstName = "Richie";
             var lastName = "Bexhell";
             var email = "test@test.com";
+            var pensionType = PensionTypes.Nest;
+            var pensionTotals = 1000m;
 
-            var clientDetails = new ClientDetailsDomainModel(clientId, firstName, lastName, email);
+            var clientDetails = new ClientDetailsDomainModel(clientId, firstName, lastName, email, pensionType, pensionTotals);
 
             _clientDetailsServiceMock.Setup(m => m.GetAsync(clientId)).ReturnsAsync(clientDetails);
 
@@ -51,6 +54,8 @@ THEN the client details are returned ")]
             result.Value.FirstName.Should().Be(firstName);
             result.Value.LastName.Should().Be(lastName);
             result.Value.EmailAddress.Should().Be(email);
+            result.Value.PensionType.Should().Be(pensionType);
+            result.Value.PensionTotal.Should().Be(pensionTotals);
         }
 
         [Fact(DisplayName = @"GIVEN a valid client Id

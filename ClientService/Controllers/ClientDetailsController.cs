@@ -10,6 +10,10 @@ using System.Collections.Generic;
 
 namespace ClientService.Controllers
 {
+    /// <summary>
+    /// Allows for the storage and retrival of client details
+    /// The PensionTypes enum is as follows 0 = Nest, 1 = Group, 2 = Executive, 3 = Stakeholder
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ClientDetailsController : ControllerBase

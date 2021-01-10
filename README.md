@@ -24,3 +24,4 @@ A person looking to improve and take this solution further could do the followin
 * Extend functionality - for example the blob stoarge uploader is fairly simple, how about taking the data from the CSV files and then saving them to the DB before uploading to blob storage?
 * Make the code more DRY (especially in the repository)
 * Add a front end to replace Swagger
+* Add Authentication to the API endpoints

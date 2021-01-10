@@ -7,8 +7,10 @@ namespace ClientService.Validators
     {
         public CreateClientDetailsValidator()
         {
+            RuleFor(x => x.Id).NotEmpty()
+                .WithMessage("Id must not be empty");
             RuleFor(x => x.FirstName).NotEmpty()
-                .WithMessage("First Name must not be empty"); ;
+                .WithMessage("First Name must not be empty");
             RuleFor(x => x.LastName).NotEmpty()
                 .WithMessage("Last Name must not be empty");
             RuleFor(x => x.EmailAddress)

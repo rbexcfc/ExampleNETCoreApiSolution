@@ -12,6 +12,8 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using ClientService.Services;
+using System.IO;
+using System;
 
 namespace LCPClientService
 {
@@ -32,7 +34,11 @@ namespace LCPClientService
                 .Bind(Configuration.GetSection("BlobStorage"));
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c => {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+            });
             services.AddMvc().AddFluentValidation();
             services.AddAutoMapper(typeof(ClientDetailsProfile));
             services.AddTransient<IClientDetailsRepository, ClientDetailsRepository>();

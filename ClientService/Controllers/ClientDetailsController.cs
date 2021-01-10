@@ -26,6 +26,9 @@ namespace ClientService.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Allows for the retrieval of all client details
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,6 +48,9 @@ namespace ClientService.Controllers
             }
         }
 
+        /// <summary>
+        /// Allows for the retrieval of a specific clients details by the given Id
+        /// </summary>
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(typeof(ClientDetailsInformation), StatusCodes.Status200OK)]
@@ -65,6 +71,9 @@ namespace ClientService.Controllers
             }
         }
 
+        /// <summary>
+        /// Allows for the saving of client details
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -74,6 +83,9 @@ namespace ClientService.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Sample endpoint that allows for CSV files to be uploaded. Will take any CSV that is not blank.
+        /// </summary>
         [HttpPost]
         [Route("upload")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -91,6 +103,9 @@ namespace ClientService.Controllers
             }
         }
 
+        /// <summary>
+        /// Allows for the deletion of client details
+        /// </summary>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Delete(Guid id)

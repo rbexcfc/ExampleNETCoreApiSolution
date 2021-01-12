@@ -9,6 +9,7 @@ It showcases real world uses for the following:
 * Blob Storage
 * xUnit, Mock, and Fluent Assertions
 * The Repository Pattern
+* The Options Pattern
 
 Before running it is required to have a Local SQL DB, the connection string must then be added in to appsettings.json. as per below.
 ```json
